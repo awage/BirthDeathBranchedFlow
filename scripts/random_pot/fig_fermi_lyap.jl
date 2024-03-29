@@ -117,9 +117,6 @@ y_init = range(-40*0.2, 40*0.2, length = num_rays)
 ys = y_init[findall(0 .≤ y_init .≤ 1.)]
 xs = range(0,15., step = dt)
 
-# pargs = (yticklabelsize = 40, xticklabelsize = 40, ylabelsize = 40, xlabelsize = 40) 
-# fig = Figure(size=(1200, 1200))
-# ax1= Axis(fig[1, 1];  xlabel = L"y(0)", ylabel = L"y(t)", pargs...) 
 
 
 a = 0.2; dot_radius = 0.2*0.25; softness = 0.2; θ_range = range(0,π/4, length = n_avg) 
@@ -143,17 +140,24 @@ for j = 1:n_avg
     push!(nb_v_pos, nb_br_pos)
 end
 
-f = Figure(); ax = Axis(f[1,1])
-lines!(ax, xs, mean(hst_v_pos, dims = 1)[1])
-lines!(ax, xs, mean(hst_v_z, dims = 1)[1]; color = :red)
-lines!(ax, xs, mean(hst_v_all, dims = 1)[1]; color = :black)
-s = "fermi_lyap_branch_hst.png"
-save(plotsdir(s),f)
+pargs = (yticklabelsize = 40, xticklabelsize = 40, ylabelsize = 40, xlabelsize = 40) 
+fig = Figure(size=(800, 1200))
+ax1= Axis(fig[1, 1];   ylabel = L"f_{area}", xticklabelsvisible = false, xlabelvisible = false, pargs...) 
+ax2= Axis(fig[2, 1]; xlabel = L"x", ylabel = L"n_{br}", pargs...) 
+lines!(ax1, xs, mean(hst_v_pos, dims = 1)[1]; label =L"\lambda > 0")
+lines!(ax1, xs, mean(hst_v_z, dims = 1)[1]; color = :red, label = L"\lambda \simeq 0")
+lines!(ax1, xs, mean(hst_v_all, dims = 1)[1]; color = :black, label = "all rays")
+ylims!(ax1,0.,0.2)
+xlims!(ax1,0.,15)
+axislegend(ax1; labelsize = 30)
 
+lines!(ax2, xs, mean(nb_v_pos, dims = 1)[1], label =L"\lambda > 0")
+lines!(ax2, xs, mean(nb_v_z, dims = 1)[1]; color = :red,label = L"\lambda \simeq 0")
+lines!(ax2, xs, mean(nb_v_all, dims = 1)[1]; color = :black, label = "all rays")
+xlims!(ax2,0.,15)
+axislegend(ax2; labelsize = 30)
 
-f = Figure(); ax = Axis(f[1,1])
-lines!(ax, xs, mean(nb_v_pos, dims = 1)[1])
-lines!(ax, xs, mean(nb_v_z, dims = 1)[1]; color = :red)
-lines!(ax, xs, mean(nb_v_all, dims = 1)[1]; color = :black)
+Label(fig[1, 1, TopLeft()], "(a)", padding = (0,15,15,0), fontsize = 30)
+Label(fig[2, 1, TopLeft()], "(b)", padding = (0,15,15,0), fontsize = 30)
 s = "fermi_lyap_branch_num.png"
-save(plotsdir(s),f)
+save(plotsdir(s),fig)
