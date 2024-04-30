@@ -84,7 +84,7 @@ Threads.@threads for j = 1:n_avg
     nb_br = get_branch_number(v0, V, y_init, xs, num_rays, j, K; prefix = "fermi_dec") 
     push!(nb_br_v, nb_br)
 end
-lines!(ax1, xs, mean(nb_br_v, dims = 1)[1]; color = :lightblue, label = "Fermi dot")
+lines!(ax1, xs, mean(nb_br_v, dims = 1)[1]; color = :blue, label = "Fermi dot")
 
 a = 0.2; dot_radius = 0.2*0.25; softness = 0.2; θ_range = range(0,π/4, length = n_avg) 
 nb_br_v = Vector{Vector{Float64}}()
@@ -95,7 +95,7 @@ Threads.@threads for j = 1:n_avg
     nb_br = get_branch_number(v0, V, y_init, xs, num_rays, j, K; prefix = "cos0_dec") 
     push!(nb_br_v, nb_br)
 end
-lines!(ax1, xs, mean(nb_br_v, dims = 1)[1]; color = :gold, label = "Periodic integrable")
-axislegend(ax1);
+lines!(ax1, xs, mean(nb_br_v, dims = 1)[1]; color = :orange, label = "Periodic integrable")
+axislegend(ax1; labelsize = 30);
 s = "branch_comp.png"
 save(plotsdir(s),fig)
