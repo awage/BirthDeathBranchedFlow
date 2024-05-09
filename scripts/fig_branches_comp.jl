@@ -62,11 +62,12 @@ end
 
 v0 = 0.1; dt = 0.01;  num_rays = 250000; K = 1.; n_avg = 40
 xs = range(0,20, step = dt)
-y_init = range(-30*0.2, 30*0.2, length = num_rays)
+# y_init = range(-30*0.2, 30*0.2, length = num_rays)
+y_init = range(-40*0.2, 40*0.2, length = num_rays)
 
 pargs = (yticklabelsize = 30, xticklabelsize = 30, ylabelsize = 30, xlabelsize = 30) 
 fig = Figure(size=(800, 600))
-ax1= Axis(fig[1, 1];  xlabel = L"x", ylabel = L"N_{b}", pargs...) 
+ax1= Axis(fig[1, 1];  xlabel = L"t", ylabel = L"N_{b}", pargs...) 
 # ax2= Axis(fig[1, 2];  xlabel = L"x", ylabel = L"n_{br}", pargs...) 
 
 ξ = 0.1; nb_br_v = Vector{Vector{Float64}}()
