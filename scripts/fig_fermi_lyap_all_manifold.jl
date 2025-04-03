@@ -158,5 +158,5 @@ axislegend(ax2; labelsize = 30)
 
 Label(fig[1, 1, TopLeft()], "(a)", padding = (0,15,15,0), fontsize = 30)
 Label(fig[2, 1, TopLeft()], "(b)", padding = (0,15,15,0), fontsize = 30)
-s = "fermi_lyap_branch_num.png"
+s = "fermi_lyap_branch_num.pdf"
 save(plotsdir(s),fig)

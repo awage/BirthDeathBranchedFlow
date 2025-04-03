@@ -108,7 +108,7 @@ end
 
 
 
-a = 0.1; v0 = 0.1; dt = 0.01;  num_rays = 200000;  ξ = 0.1
+a = 0.1; v0 = 0.1; dt = 0.001;  num_rays = 200000;  ξ = 0.1
 y_init = range(-20*a, 20*a, length = num_rays)
 V = correlated_random_potential(20*a,10*a, ξ, v0, 201)
 ys = y_init[findall(0 .≤ y_init .≤ 0.5)]
@@ -152,5 +152,5 @@ Label(fig[1, 1, TopLeft()], "(a)", padding = (0,15,15,0), fontsize = 30)
 Label(fig[1, 2, TopLeft()], "(b)", padding = (0,15,15,0), fontsize = 30)
 Label(fig[2, 1, TopLeft()], "(c)", padding = (0,15,15,0), fontsize = 30)
 Label(fig[2, 2, TopLeft()], "(d)", padding = (0,15,15,0), fontsize = 30)
-s = "branch_detection.png"
+s = "branch_detection.pdf"
 save(plotsdir(s),fig)
