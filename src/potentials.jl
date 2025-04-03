@@ -143,6 +143,10 @@ function force(V::LatticePotential, x::Real, y::Real)::SVector{2,Float64}
     return F
 end
 
+function force_y(V::LatticePotential, x::Float64, y::Float64)
+    return force(V, x, y)[2]
+end
+
 struct PeriodicGridPotential{Interpolation<:AbstractInterpolation} <: AbstractPotential
     itp::Interpolation
     """

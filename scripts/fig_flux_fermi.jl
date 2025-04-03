@@ -90,7 +90,7 @@ end
 
 
 v0 = 0.1; dt = 0.01; T = 10000
-num_rays = 100000; θ = 0.; lyap_threshold = 2e-3
+num_rays = 10000; θ = 0.; lyap_threshold = 2e-3
 a = 0.2; dot_radius = 0.2*0.25; softness = 0.2; 
 xs = range(0,10., step = dt)
 y_init = range(-20*a, 20*a, length = num_rays)
