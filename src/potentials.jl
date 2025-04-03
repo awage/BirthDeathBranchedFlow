@@ -8,7 +8,7 @@ using LinearAlgebra
 using StaticArrays
 using FFTW
 using Interpolations
-using KernelDensity
+# using KernelDensity
 using LaTeXStrings
 using Random:Xoshiro
 

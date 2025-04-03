@@ -1,6 +1,7 @@
 using DrWatson 
 @quickactivate
-using BranchedFlowSim
+include(srcdir("BranchedFlowSim.jl"))
+using .BranchedFlowSim
 using ProgressMeter
 using ChaosTools
 using CairoMakie
@@ -9,8 +10,8 @@ using LinearAlgebra
 using StatsBase
 using CodecZlib
 using KernelDensity
-using LsqFit
-using Peaks
+# using LsqFit
+# using Peaks
 
 
 include(srcdir("utils.jl"))

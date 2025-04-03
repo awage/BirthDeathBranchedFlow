@@ -1,6 +1,7 @@
 using DrWatson 
 @quickactivate
-using BranchedFlowSim
+include(srcdir("BranchedFlowSim.jl"))
+using .BranchedFlowSim
 using ProgressMeter
 using CairoMakie
 using LaTeXStrings
